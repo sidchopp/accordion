@@ -1,15 +1,29 @@
+import { useState } from 'react';
+
 import Questions from './Questions'
+import Question from './Question'
 import './index.css'
 
 function App() {
+
+  // states
+
+  const [questions, setQuestions] = useState(Questions);
+
   return (
-    <div>
-      {Questions.map((about) => {
-        return (
-          <div>{about.title}</div>
-        )
-      })}
-    </div>
+    <main>
+      <div className='container'>
+        <h3>Questions & Answers</h3>
+        <section className="info">
+          {Questions.map((ques) => {
+            return (
+              <Question key={ques.id} {...ques} />
+            )
+          })}
+        </section>
+      </div>
+
+    </main>
   );
 }
 
